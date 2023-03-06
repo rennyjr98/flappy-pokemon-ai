@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import SketchComponent from "./sketch/Sketch";
+
+import pikachuImgPlayer from "./assets/pikachu.png";
+import charmanderImgPlayer from "./assets/charmander.png";
+import bulbasaurImgPlayer from "./assets/bullbasaur.png";
+import squirtleImgPlayer from "./assets/squirtle.png";
+import { useState } from "react";
 
 function App() {
+  const [selectedPokemon, setSelectedPokemon] = useState<number>(0);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <SketchComponent selectedPokemon={selectedPokemon} />
+      <div className="container">
+        <h1>Flappy Pokemon</h1>
+        <h4>Instructions</h4>
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          The little slider controls the velocity of the "game", you can
+          increase or decrease the speed to make the AI learns faster or slower
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <nav>
+          <h5>Choose a pokemon</h5>
+          <ul>
+            <li>
+              <button onClick={() => setSelectedPokemon(0)}>
+                <img src={pikachuImgPlayer} alt="pikachu" />
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setSelectedPokemon(1)}>
+                <img src={charmanderImgPlayer} alt="charmander" />
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setSelectedPokemon(2)}>
+                <img src={bulbasaurImgPlayer} alt="bulbasaur" />
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setSelectedPokemon(3)}>
+                <img src={squirtleImgPlayer} alt="squirtle" />
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 }
